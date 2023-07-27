@@ -1,0 +1,20 @@
+FROM jrottenberg/ffmpeg:4.1-alpine AS ffmpeg
+FROM node:20-alpine3.17
+
+COPY --from=ffmpeg / /
+
+# Create app directory
+WORKDIR /usr/src/app/dev
+
+# Download dependencies
+COPY package*.json ./
+RUN npm install && npm cache clean --force
+ENV PATH=/usr/src/app/node_modules/.bin:$PATH
+
+WORKDIR /usr/src/app/dev
+
+# Start application
+COPY . .
+EXPOSE ${PORT}
+
+CMD [ "npm", "run", "start" ]
