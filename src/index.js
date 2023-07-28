@@ -1,5 +1,4 @@
 const elastic = require("./elastic")
-const server  = require("./server")
 const { connectQueue } = require('./rabbitmq')
 
 require("dotenv").config();
@@ -18,6 +17,7 @@ require("dotenv").config();
       await elastic.setEntriesMapping()
     }
 
+    const server  = require("./server")
     server.start()
   }
 })()

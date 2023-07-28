@@ -12,6 +12,8 @@ services:
   # Node api service
   api:
     build: .
+    stdin_open: true # docker run -i
+    tty: true
     ports:
       - ${PORT}:${PORT}
     environment:

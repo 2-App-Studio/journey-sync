@@ -9,9 +9,10 @@ WORKDIR /usr/src/app
 # Download dependencies
 COPY package*.json ./
 RUN npm install
+RUN npm install -g nodemon
 
 # Start application
 COPY . .
 EXPOSE ${PORT}
 
-CMD [ "npm", "run", "start" ]
+CMD [ "nodemon", "src/index.js", "--no-stdin" ]

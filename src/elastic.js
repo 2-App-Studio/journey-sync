@@ -9,7 +9,7 @@ const esclient = new Client({
   },
 });
 const index = "entries";
-const type = "entries";
+const type = "entry";
 /**
  * @function createIndex
  * @returns {void}
@@ -32,10 +32,7 @@ async function createIndex(index) {
 async function setEntriesMapping() {
   try {
     const schema = {
-      quote: {
-        type: "text"
-      },
-      author: {
+      entry: {
         type: "text"
       }
     };
@@ -43,7 +40,6 @@ async function setEntriesMapping() {
     await esclient.indices.putMapping({
       index,
       type,
-      include_type_name: true,
       body: {
         properties: schema
       }

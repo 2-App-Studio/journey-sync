@@ -16,6 +16,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.dev
+    stdin_open: true # docker run -i
+    tty: true
     ports:
       - ${PORT}:${PORT}
     environment:

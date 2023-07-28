@@ -112,10 +112,13 @@ This is an example of how to list things you need to use the software and how to
     KIBANA_PASSWORD={YOUR_PASSWORD_HERE}
    ```
 
-3. Start the containers with `docker-compose`
+3. Start the containers
    ```sh
-    docker-compose up -d
+   npm run start 
    ```
+
+4. There will be a few prompts to set-up your admin account.
+  - If you choose to enable End-to-end encryption, make sure you remember your passphrase, as it cannot be recovered.
 
 Note: if you have errors starting up elastic search, you might have to increase your process's memory allocation. Please refer to [the following](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_set_vm_max_map_count_to_at_least_262144) for more information.
   - If you are on Linux, this can be done with:
@@ -169,7 +172,7 @@ Don't forget to give the project a star! Thanks again!
 ### Things to note:
 - A separate `docker-compose.dev.yml` is provided for convenient development
   ```sh
-  docker-compose -f docker-compose.dev.yml up -d 
+  npm run dev 
   ```
 
   - Includes configurations that support hot reloading
